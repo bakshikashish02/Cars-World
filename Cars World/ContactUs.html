@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Contact us Page</title>
+
+  <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/carousel/">
+
+
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
+
+  <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+
+  <style>
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+    }
+
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+    }
+
+    .zoom:hover {
+      transform: scale(1.05);
+      background-color: aquamarine;
+    }
+
+    .background-image {
+      height: 50px;
+      width: 100px;
+    }
+
+    .b-example-divider {
+      width: 100%;
+      height: 3rem;
+      background-color: rgba(0, 0, 0, .1);
+      border: solid rgba(0, 0, 0, .15);
+      border-width: 1px 0;
+      box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+    }
+
+    .b-example-vr {
+      flex-shrink: 0;
+      width: 1.5rem;
+      height: 100vh;
+    }
+
+    .bi {
+      vertical-align: -.125em;
+      fill: currentColor;
+    }
+
+    .nav-scroller {
+      position: relative;
+      z-index: 2;
+      height: 2.75rem;
+      overflow-y: hidden;
+    }
+
+    .nav-scroller .nav {
+      display: flex;
+      flex-wrap: nowrap;
+      padding-bottom: 1rem;
+      margin-top: -1px;
+      overflow-x: auto;
+      text-align: center;
+      white-space: nowrap;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .btn-bd-primary {
+      --bd-violet-bg: #712cf9;
+      --bd-violet-rgb: 112.520718, 44.062154, 249.437846;
+
+      --bs-btn-font-weight: 600;
+      --bs-btn-color: var(--bs-white);
+      --bs-btn-bg: var(--bd-violet-bg);
+      --bs-btn-border-color: var(--bd-violet-bg);
+      --bs-btn-hover-color: var(--bs-white);
+      --bs-btn-hover-bg: #6528e0;
+      --bs-btn-hover-border-color: #6528e0;
+      --bs-btn-focus-shadow-rgb: var(--bd-violet-rgb);
+      --bs-btn-active-color: var(--bs-btn-hover-color);
+      --bs-btn-active-bg: #5a23c8;
+      --bs-btn-active-border-color: #5a23c8;
+    }
+
+    .bd-mode-toggle {
+      z-index: 1500;
+    }
+
+    .bd-mode-toggle .dropdown-menu .active .bi {
+      display: block !important;
+    }
+
+    .responsive-img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .arrow {
+    transition: transform 0.3s ease;
+  }
+
+  .dropdown-item:hover .arrow {
+    transform: rotate(180deg);
+  }
+
+  .dropdown-toggle::after {
+    transition: transform 0.3s ease;
+  }
+
+  .dropdown:hover .dropdown-toggle::after {
+    transform: rotate(90deg);
+  }
+
+
+    /* Vibhav CSS */
+    .dropbtn {
+      /* background-color: #e50914; */
+      /* color: white; */
+      padding: 8px;
+      font-size: 16px;
+      border: none;
+      cursor: pointer;
+    }
+
+    /* .dropbtn:hover, .dropbtn:focus {
+    background-color: #b20710;
+} */
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #212529;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+      z-index: 1;
+    }
+
+    .dropdown-content a {
+      color: rgb(255, 255, 255, 1);
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+    }
+
+
+    .sub-navbar {
+      display: none;
+      position: absolute;
+      left: 100%;
+      top: auto;
+      margin-top: -49px;
+      background-color: #212529;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+      z-index: 1;
+    }
+
+    .dropdown-item:hover .sub-navbar {
+      display: block;
+    }
+
+    .dropdown-content a:hover {
+      background-color: #919191;
+      color: white;
+    }
+
+
+    .open-modal-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 1001;
+    }
+
+    .open-modal-btn i {
+      font-size: 2rem;
+      color: rgb(250, 247, 247);
+      background-color: var(--main-color);
+      border: none;
+      border-radius: 50%;
+      padding: 10px;
+      cursor: pointer;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .open-modal-btn i:hover {
+      background-color: #c02761;
+    }
+
+    .open-modal-btn {
+      position: absolute;
+      top: 1 rem;
+      right: 1rem;
+      z-index: 1001;
+    }
+
+    .nav-item .icon {
+      margin-right: 5px;
+      /* Adjust as needed */
+    }
+
+
+    .accessibilityButton {
+      width: 50px;
+      height: 60px;
+      position: fixed;
+      left: 95%;
+      bottom: 10px;
+      padding: 10px;
+      z-index: 2000;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    .accessibilityButton img {
+      width: 50px;
+      height: auto;
+    }
+
+    .navbar.accessibility-on .tablinks:hover,
+    .navbar.accessibility-on .dropdown:hover,
+    .navbar.accessibility-on .dropdown-content-genre a:hover,
+    .navbar.accessibility-on .dropdown-content-about a:hover {
+      background-color: #FFFF00;
+      color: black;
+    }
+
+    /* ==================*/
+    .dialog-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 999;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .dialog-box {
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      padding: 20px;
+      max-width: 400px;
+      text-align: center;
+      position: relative;
+    }
+
+    .close {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      cursor: pointer;
+      font-size: 18px;
+      color: #999;
+    }
+
+
+    /* .rotate {
+    transform: rotate(180deg);
+} */
+
+.rotate-down {
+        transform: rotate(180deg);
+    }
+
+    /* #servicesBtn:hover #arrow {
+      transform: rotate(180deg);
+    }
+
+    #ImageGallerybtn :hover #arrow {
+      transform: rotate(90deg);
+    } */
+
+
+
+    h2 {
+      margin-top: 0;
+    }
+
+    p {
+      margin-bottom: 20px;
+    }
+
+    button {
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+
+
+
+  .dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.arrow {
+  /* Style the arrow (optional) */
+  font-size: 12px;
+  margin-left: 5px;
+  transition: transform 0.2s ease-in-out;
+}
+
+
+
+/* .dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+} */
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* Added styles for arrow rotation */
+.dropdown.show .arrow {  /* Target dropdown with open class */
+  transform: rotate(180deg);
+}
+
+.dropdown:hover .arrow,  /* Maintain rotation on hover while open */
+.dropdown.show:hover .arrow {
+  transform: rotate(180deg);
+}
+
+/* Targeting arrows directly within dropdown-item */
+.dropdown-item:hover .arrow,
+.dropdown.show:hov .dropdown-item .arrow {
+  transform: rotate(180deg);
+}
+
+
+
+  </style>
+
+  <link rel="stylesheet" href="ContactUs.css">
+</head>
+
+<body>
+  <!-- Header section -->
+
+  <!-- <header data-bs-theme="dark">
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#"><img src="LOOGO1.png" alt="logo" height="50" width="100"></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+          aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <ul class="navbar-nav me-auto mb-2 mb-md-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="ContactUs.html">Contact Us</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link disabled" href="AboutUs.html">About Us</a>
+            </li>
+          </ul>
+           <form class="d-flex" role="search">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+          </form> 
+        </div>
+      </div>
+    </nav>
+  </header> -->
+
+  <header data-bs-theme="dark">
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#"><img src="LOOGO1.png" alt="logo" height="50" width="100"></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+          aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <ul class="navbar-nav me-auto mb-2 mb-md-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="index.html"><i class="fas fa-home icon"></i>Home</a>
+            </li>
+            <li class="nav-item">
+
+
+
+              <!-- -->
+              <div class="dropdown">
+                <button class="tablinks dropbtn nav-link">
+                  <i class="fas fa-cogs"></i> Services
+                  <i class="fas fa-chevron-down arrow "></i>
+                </button>
+              
+                <div id="myDropdown" class="dropdown-content" id="dropdownContent">
+                  <a href="ViewCars.html">View Cars</a>
+              
+                  <div class="dropdown-item">
+                    <a href="#" id="ImageGallerybtn">Image Gallery
+              
+                    </a>
+                    <div class="sub-navbar">
+                      <a href="RollsRoyce.html">RollsRoyce</a>
+                      <a href="Ferrari.html">Ferrari</a>
+                      <a href="RangeRover.html">Range-Rover</a>
+                    </div>
+                  </div>
+                  <div class="dropdown-item">
+                    <a href="#" id="CompareCarsbtn">Compare Cars
+                    </a>
+                    <div class="sub-navbar">
+                      <a href="RollVsRange.html">Rolls-Royce Vs Range-Rover</a>
+                      <a href="RollsVsFerrari.html">Rolls-Royce Vs Ferrari</a>
+                      <a href="RangeVsFerrari.html">Ferrari Vs Range-Rover</a>
+                    </div>
+                  </div>
+                  
+                </div>
+              </div>
+              
+              
+              
+
+
+
+
+              <!-- <a class="nav-link " href="Services.html">Services</a> -->
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="ContactUs.html">
+                <i class="fas fa-envelope"></i> Contact Us
+              </a>
+            </li>
+
+
+          </ul>
+          <!-- <form class="d-flex" role="search">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+          </form> -->
+        </div>
+      </div>
+    </nav>
+
+
+
+
+
+
+
+
+    <!-- <button id="open-modal-btn" class="open-modal-btn">
+      <i class="bi bi-universal-access"></i>
+    </button> -->
+
+  </header>
+
+
+  <!-- banner section -->
+  <section class="banner">
+    <img src="https://media.geeksforgeeks.org/wp-content/uploads/20230822131732/images.png"
+      alt="Welcome to our Contact Us page">
+    <h1>Get in Touch With Us</h1>
+    <p>
+      We're here to answer any questions you may have.
+    </p>
+  </section>
+
+  <!-- Contact form -->
+  <section class="contact-form">
+    <div class="form-container">
+      <h2>Your Details</h2>
+      <form action="#" method="POST">
+
+        <label for="name">Name: </label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="email">Email: </label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="phone">Phone: </label>
+        <input type="tel" id="phone" name="phone">
+
+        <label for="message">Message: </label>
+        <textarea id="message" name="message" rows="4" required></textarea>
+
+        <button type="submit" class="submit-button">Submit</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Company contact info -->
+  <section class="contact-info">
+    <h2>Contact Information</h2>
+    <address>
+      Car World<br>
+      123 Main Street<br>
+      Shimla, Himachal Pradesh 171001<br>
+      Phone: <a href="tel:8261090637">8261090637</a><br>
+      Email: <a href="mailto:bakshikashish02@gmail.com">bakshikashish02@gmail.com</a>
+    </address>
+  </section>
+
+  <!-- Footer section -->
+  <footer>
+    <p>
+      © 2023 Your Company. All rights reserved.
+    </p>
+  </footer>
+  <script src="Script.js"></script>
+  <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+
+<script>
+
+
+  //   function toggleDropdown() {
+  //     var arrowIcon = document.getElementById("arrow-icon");
+  //     arrowIcon.classList.toggle("rotate");
+  // }
+
+
+  // JavaScript to toggle arrow inversion when dropdown is opened/closed
+  // document.addEventListener("DOMContentLoaded", function() {
+  //     var arrow = document.getElementById('arrow');
+  //     var dropdownContent = document.getElementById('dropdownContent');
+  //     var servicesBtn = document.getElementById('servicesBtn');
+
+  //     servicesBtn.addEventListener('click', function() {
+  //         dropdownContent.classList.toggle('show');
+  //         arrow.classList.toggle('rotate-down');
+  //     });
+  // });
+
+  // Function to close the dialog box
+  function closeDialog(dialogId) {
+    var dialog = document.getElementById(dialogId);
+    dialog.style.display = "none";
+  }
+
+  // Prevent copying
+  document.addEventListener('copy', function (e) {
+    e.preventDefault();
+    showDialog('copyDialog');
+  });
+
+  // Prevent right-clicking
+  document.addEventListener('contextmenu', function (e) {
+    e.preventDefault();
+    showDialog('rightClickDialog');
+  });
+
+  // Function to show the dialog box
+  function showDialog(dialogId) {
+    var dialog = document.getElementById(dialogId);
+    dialog.style.display = "flex"; // Show the dialog with flex display to center it
+  }
+  var dropdownItem = document.querySelector('.dropdown-item');
+  var arrowIcon = document.getElementById('arrowIcon');
+  var subNavbar = document.querySelector('.sub-navbar');
+
+  dropdownItem.addEventListener('click', function () {
+      if (subNavbar.style.display === 'none' || subNavbar.style.display === '') {
+          subNavbar.style.display = 'block';
+          arrowIcon.classList.remove('fa-chevron-left');
+          arrowIcon.classList.add('fa-chevron-right');
+      } else {
+          subNavbar.style.display = 'none';
+          arrowIcon.classList.remove('fa-chevron-right');
+          arrowIcon.classList.add('fa-chevron-left');
+      }
+  });
+
+  // Add transition effect when sub-navbar is displayed or hidden
+  subNavbar.addEventListener('transitionend', function () {
+      arrowIcon.style.transition = subNavbar.style.display === 'none' ? 'transform 3s ease' : 'transform 3s ease';
+  });
+  
+</script>
+
+</html>
